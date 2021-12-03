@@ -23,7 +23,7 @@ public class GestaoEmpresasBean implements Serializable {
 	private List<Empresa> listaEmpresas;
 
 	public void todasEmpresas() {
-		//listaEmpresas = empresas.todas();
+		listaEmpresas = empresas.todas();
 	}
 	
 	public List<Empresa> getListaEmpresas() {
