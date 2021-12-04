@@ -7,6 +7,8 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.primefaces.context.RequestContext;
+
 import com.algaworks.erp.model.Empresa;
 import com.algaworks.erp.model.RamoAtividade;
 import com.algaworks.erp.model.TipoEmpresa;
@@ -15,6 +17,7 @@ import com.algaworks.erp.repository.RamoAtividades;
 import com.algaworks.erp.service.CadastroEmpresaService;
 import com.algaworks.erp.util.FacesMessages;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Named
@@ -54,7 +57,9 @@ public class GestaoEmpresasBean implements Serializable {
 			pesquisar();
 		}
 		
-		messages.info("Empresa cadastrada com sucesso!");
+		messages.info("Empresa salva com sucesso!");
+		
+		RequestContext.getCurrentInstance().update(Arrays.asList("frm:empresasDataTable","frm:messages"));
 	}
 	
 	public void pesquisar() {
