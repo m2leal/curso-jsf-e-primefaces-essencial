@@ -69,6 +69,7 @@
 						 paginator="true"
 						 rows="10"
 						 paginatorPosition="bottom" >
+						 
 				<p:column headerText="Razão social" sortBy="#{empresa.razaoSocial}">
 					<h:outputText value="#{empresa.razaoSocial}"/>
 				</p:column>
@@ -95,26 +96,25 @@
 					  
 				<p:messages id="empresaMessages"/>
 				
+				<p:defaultCommand target="salvarCommandButton" scope="empresaDialog"/>
+				
 				<h:panelGrid id="empresaPanelGrid"
 							 columns="2"
 							 rendered="#{gestaoEmpresasBean.empresa ne null}">
 							 
-					<p:outputLabel value="Razão Social"
-								   for="razaoSocial"/>
+					<p:outputLabel value="Razão Social" for="razaoSocial"/>
 					<p:inputText id="razaoSocial"
 								 size="80"
 								 maxlength="120"
 								 value="#{gestaoEmpresasBean.empresa.razaoSocial}"/>
 					
-					<p:outputLabel value="Nome Fantasia"
-								   for="nomeFantasia"/>
+					<p:outputLabel value="Nome Fantasia" for="nomeFantasia"/>
 					<p:inputText id="nomeFantasia"
 								 size="80"
 								 maxlength="80"
 								 value="#{gestaoEmpresasBean.empresa.nomeFantasia}"/>
 					
-					<p:outputLabel value="Tipo Empresa"
-								   for="tipo"/>
+					<p:outputLabel value="Tipo Empresa" for="tipo"/>
 					<p:selectOneMenu id="tipo"
 									 value="#{gestaoEmpresasBean.empresa.tipo}">
 									 
@@ -132,15 +132,13 @@
 								 maxlength="18"
 								 value="#{gestaoEmpresasBean.empresa.cnpj}"/>
 					
-					<p:outputLabel value="Data Fundação"
-								   for="dataFundacao"/>
+					<p:outputLabel value="Data Fundação" for="dataFundacao"/>
 					<p:calendar id="dataFundacao"
 								pattern="dd/MM/yyyy"
 								size="30"
 								value="#{gestaoEmpresasBean.empresa.dataFundacao}"/>
 					
-					<p:outputLabel value="Ramo Atividade"
-								   for="ramoAtividade"/>
+					<p:outputLabel value="Ramo Atividade" for="ramoAtividade"/>
 					<p:autoComplete id="ramoAtividade"
 									size="80"
 									completeMethod="#{gestaoEmpresasBean.completarRamoAtividade}"
@@ -151,7 +149,8 @@
 									value="#{gestaoEmpresasBean.empresa.ramoAtividade}"/>
 					
 					<h:outputLabel/>
-					<p:commandButton value="Salvar"
+					<p:commandButton id="salvarCommandButton"
+									 value="Salvar"
 									 actionListener="#{gestaoEmpresasBean.salvar}"
 									 update="empresaPanelGrid empresaMessages"
 									 oncomplete="if (!args.validationFailed) PF('empresaDialogWidgetVar').hide()"
